@@ -1,5 +1,8 @@
 
 
+from sys import api_version
+
+
 Welcome = '''
 **************************************
 **    Welcome to the Snakes Cafe!   **
@@ -9,9 +12,13 @@ Welcome = '''
 **************************************
     '''
 Appetizers = ["Wings", "Cookies", "Spring Rolls"] 
+Appetizers_Counters = [ 0,0,0]
 Entrees = ["Salmon", "Steak", "Meat Tornado", "A Literal Garden"]
+Entrees_Counter = [0,0,0]
 Desserts = ["Ice Cream", "Cake", "Pie"]
+Desserts_Counter=[0,0,0]
 Beverages = ["Coffee", "Tea", "Unicorn Tears"]
+Beverages_Counter = [0,0,0]
 
 print (Welcome)
 print("Appetizers\n"
@@ -42,14 +49,27 @@ orderMess = '''
     '''
 print(orderMess)
 
-order = input("<".ljust(2, " "))
+order = ""
 order_count = 1
 
-while order != "quit":
-    print(f'** {order_count} order of {order} have been added to your meal **')
+while True :
     order = input("<".ljust(2, " "))
-    order_count +=1
-
+    if order == "quit":
+        break
+    elif order in Appetizers:
+        Appetizers_Counters[Appetizers.index(order)] +=1
+        print(f'** {Appetizers_Counters[Appetizers.index(order)]} order of {order} have been added to your meal **')
+    elif order in Entrees:
+        Entrees_Counter[Entrees.index(order)] +=1
+        print(f'** {Entrees_Counter[Entrees.index(order)]} order of {order} have been added to your meal **')
+    elif order in Desserts:
+        Desserts_Counter[Desserts.index(order)] +=1
+        print(f'** {Desserts_Counter[Desserts.index(order)]} order of {order} have been added to your meal **')
+    elif order in Beverages:
+        Beverages_Counter[Beverages.index(order)] +=1
+        print(f'** {Beverages_Counter[Beverages.index(order)]} order of {order} have been added to your meal **')
+    else:
+        print("not in the menu !")
 
 
 
